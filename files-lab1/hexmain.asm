@@ -27,9 +27,9 @@ stop:	j	stop		# stop after one run
   	add	$v0,$v0,$a0
   	j	done
   else:
-    	slti	$t0,$a0,0xF	# Checks if $a0 is less than 0xF
-      	beq	$t0,$zero,done	# If $a0 is bigger than 0xF then jump to label done:
-  	nop
+      	#slti	$t0,$a0,0xF	# Checks if $a0 is less than 0xF
+      	#beq	$t0,$zero,done	# If $a0 is bigger than 0xF then jump to label done:
+  	#nop
 	li 	$v0,0x37 	# ASCII code for A is 0x41 and 0x41-0xA = 0x37
   	add	$v0,$v0,$a0	
   	j	done

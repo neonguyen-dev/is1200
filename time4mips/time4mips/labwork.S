@@ -19,6 +19,7 @@
   #
   # Please add your own code below this line
   #
+  # Code below is written by N Nguyen and P Patranika
  hexasc:
   	slti	$t0,$a0,0xA	# Checks if $a0 is less than 0xF
   	beq	$t0,$zero,biggerthan # If $a0 is bigger than 0xA then jump to label biggerthan:
@@ -28,9 +29,9 @@
   	j	done
   	nop
   biggerthan:
-    	slti	$t0,$a0,0xF	# Checks if $a0 is less than 0xF
-      	beq	$t0,$zero,done	# If $a0 is bigger than 0xF then jump to label done:
-  	nop
+    	#slti	$t0,$a0,0xF	# Checks if $a0 is less than 0xF
+      	#beq	$t0,$zero,done	# If $a0 is bigger than 0xF then jump to label done:
+  	#nop
 	li 	$v0,0x37 	# ASCII code for A is 0x41 and 0x41-0xA = 0x37
   	add	$v0,$v0,$a0
   	j	done

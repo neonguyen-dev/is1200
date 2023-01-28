@@ -83,9 +83,9 @@ tiend:	sw	$t0,0($a0)	# save updated result
   	j	done
   	nop
   biggerthan:
-    	slti	$t0,$a0,0xF	# Checks if $a0 is less than 0xF
-      	beq	$t0,$zero,done	# If $a0 is bigger than 0xF then jump to label done:
-  	nop
+    	#slti	$t0,$a0,0xF	# Checks if $a0 is less than 0xF
+      	#beq	$t0,$zero,done	# If $a0 is bigger than 0xF then jump to label done:
+  	#nop
 	li 	$v0,0x37 	# ASCII code for A is 0x41 and 0x41-0xA = 0x37
   	add	$v0,$v0,$a0
   	j	done
@@ -96,8 +96,11 @@ tiend:	sw	$t0,0($a0)	# save updated result
   	
   # Delay function
   delay:
+  	PUSH	$s0
+  	PUSH	$s1
+  
   	move 	$s0,$a0
-  	li 	$t0,1
+  	li 	$t0,4771
   	nop
   loop:
     	move	$s1,$zero
@@ -113,6 +116,9 @@ tiend:	sw	$t0,0($a0)	# save updated result
 	j forloop
 	nop
   end:
+  	POP	$s1
+ 	POP	$s0
+ 	 	 	
   	jr 	$ra
   	nop
   	
