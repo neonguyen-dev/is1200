@@ -43,6 +43,9 @@
   # Delay function
 .global delay
 delay:
+	PUSH 	$s0
+	PUSH 	$s1
+	
   	move 	$s0,$a0
   	li 	$t0,4500
   	nop
@@ -60,6 +63,9 @@ delay:
 	j forloop
 	nop
   end:
+  	POP	$s1
+  	POP	$s0
+  	
   	jr 	$ra
   	nop
   	
