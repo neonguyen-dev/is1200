@@ -6,8 +6,27 @@
 char* text1 = "This is a string.";
 char* text2 = "Yet another thing.";
 
-void work(){
-  
+int list1values[20];
+int list2values[20];
+
+int* list1 = list1values;
+int* list2 = list2values;
+
+int count = 0;
+
+void copycodes(char* text, int* list, int* countpointer){
+  while((int)*text != 0)
+  {
+    *list = (int)*text;
+    text++;
+    list++;
+    *countpointer += 1;
+  }
+}
+
+void work(){ 
+  copycodes(text1, list1, &count);
+  copycodes(text2, list2, &count);
 }
 
 void printlist(const int* lst){
