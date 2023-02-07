@@ -42,14 +42,14 @@ work:
 	la	$a1,list2
 	la	$a2,count
 	jal	copycodes
-	POP	($ra)
+	POP	($ra)s
 	
 	
 # function copycodes()
 copycodes:
 loop:
 	lb	$t0,0($a0)	
-	beq	$t0,$0,done
+	beq	$t0,$0,done	
 	sw	$t0,0($a1)
 
 	addi	$a0,$a0,1

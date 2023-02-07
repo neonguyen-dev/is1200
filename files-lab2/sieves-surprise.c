@@ -24,8 +24,9 @@ void print_sieves(int n){
   double currentTime;
 
   start_time = clock();
-
-  int values[n];
+  
+  int* values = malloc(n*sizeof(int));
+  int reallocSize = n;
   int currentColumn = 0;
 
   for(int i = 2; i < n; i++){
@@ -41,11 +42,17 @@ void print_sieves(int n){
     }
   }
   
+int previousPrime = 0;
+int countEight = 0;
 //print the numbers
   for(int i = 2; i < n; i++){
     if(values[i] != 0){
+      if((i - previousPrime) == 8){
+        countEight++;
+      }
       print_number(i);
       currentColumn++;
+      previousPrime = i;
     }
     if(currentColumn == COLUMNS)
     {
@@ -53,10 +60,14 @@ void print_sieves(int n){
       currentColumn = 0;
     }
   }
+  free(values);
+
   end_time = clock();
   currentTime = (double)(end_time - start_time) / CLOCKS_PER_SEC;
   
   printf("\n%f", currentTime);
+  printf("\nNumber of times the distance is eight %d", countEight);
+
 }
 
 // 'argc' contains the number of program arguments, and
