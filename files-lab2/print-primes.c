@@ -5,9 +5,11 @@
  This file is in the public domain.
 */
 
-
+// Written by Peter Patranika and co-developed by Neo Nguyen
+// This only includes methods is_prime from last assignment, print_number and print_primes 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #define COLUMNS 6
 int is_prime(int n){
@@ -29,6 +31,12 @@ void print_primes(int n){
   // with the following formatting. Note that
   // the number of columns is stated in the define
   // COLUMNS
+  clock_t start_time;
+  clock_t end_time;
+  double currentTime;
+
+  start_time = clock();
+
   int currentColumn = 0;
   for (int i = 2; i < n; i++)
   {
@@ -43,7 +51,10 @@ void print_primes(int n){
       currentColumn = 0;
     }
   }
+  end_time = clock();
+  currentTime = (double)(end_time - start_time) / CLOCKS_PER_SEC;
   
+  printf("\n%f", currentTime);
 
   /*
   printf("%10d ", 2);

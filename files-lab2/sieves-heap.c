@@ -5,9 +5,11 @@
  This file is in the public domain.
 */
 
+//Written by Neo Nguyen and co-developed by Peter Patranika
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #define COLUMNS 6
 
@@ -17,6 +19,12 @@ void print_number(int n)
 }
 
 void print_sieves(int n){
+  clock_t start_time;
+  clock_t end_time;
+  double currentTime;
+
+  start_time = clock();
+  
   int* values = malloc(n*sizeof(int));
   int reallocSize = n;
   int currentColumn = 0;
@@ -30,7 +38,7 @@ void print_sieves(int n){
     if(values[i] != 0){
       for(int j = i*i; j < n; j += i){
         values[j] = 0;
-        n--;
+        //n--;
       }
     }
   }
@@ -48,6 +56,12 @@ void print_sieves(int n){
     }
   }
   free(values);
+
+  end_time = clock();
+  currentTime = (double)(end_time - start_time) / CLOCKS_PER_SEC;
+  
+  printf("\n%f", currentTime);
+
 }
 
 // 'argc' contains the number of program arguments, and

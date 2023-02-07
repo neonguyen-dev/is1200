@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #define COLUMNS 6
 
@@ -17,6 +18,12 @@ void print_number(int n)
 }
 
 void print_sieves(int n){
+  clock_t start_time;
+  clock_t end_time;
+  double currentTime;
+
+  start_time = clock();
+
   int values[n];
   int currentColumn = 0;
 
@@ -45,6 +52,10 @@ void print_sieves(int n){
       currentColumn = 0;
     }
   }
+  end_time = clock();
+  currentTime = (double)(end_time - start_time) / CLOCKS_PER_SEC;
+  
+  printf("\n%f", currentTime);
 }
 
 // 'argc' contains the number of program arguments, and

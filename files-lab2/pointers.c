@@ -1,5 +1,6 @@
 
-
+//Written by Neo Nguyen and co-developed by Peter Patranika
+//This only applies for methods copycodes and work, and int variables and int pointers.
 
 #include <stdio.h>
 

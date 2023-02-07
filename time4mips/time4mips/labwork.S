@@ -118,6 +118,29 @@ time2string:
   	li $t0, 0
 	sb $t0, 5($s0)
 	
+	andi	$t0,$s1,0xff
+  	beq	$t0,$zero,ding
+  	nop
+  	j 	quit
+  	nop
+  	
+  ding:
+  	li	$t0,0x44
+  	sb	$t0,0($s0)
+  	
+	li	$t0,0x49
+  	sb	$t0,1($s0)
+  	
+  	li	$t0,0x4E
+  	sb	$t0,2($s0)  
+  	
+  	li	$t0,0x47
+  	sb	$t0,3($s0)
+  	
+  	li	$t0,0x0
+  	sb	$t0,4($s0)
+  quit:
+	
 	# POP
   	POP $ra
   	POP $s1

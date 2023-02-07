@@ -5,7 +5,8 @@
  This file is in the public domain.
 */
 
-
+// Written by Peter Patranika and co-developed by Neo Nguyen
+// Only applies for is_prime function
 #include <stdio.h>
 
 int is_prime(int n){
