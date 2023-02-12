@@ -118,8 +118,8 @@ time2string:
   	li $t0, 0
 	sb $t0, 5($s0)
 	
-	andi	$t0,$s1,0xff
-  	beq	$t0,$zero,ding
+	#andi	$t0,$s1,0xff
+  	#beq	$t0,$zero,ding
   	nop
   	j 	quit
   	nop
