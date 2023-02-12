@@ -16,7 +16,10 @@
 
 int mytime = 0x5957;
 
+int count = 0;
+
 char textstring[] = "text, more text, and even more text!";
+
 
 /* Interrupt Service Routine */
 void user_isr( void )
@@ -27,8 +30,15 @@ void user_isr( void )
 /* Lab-specific initialization goes here */
 void labinit( void )
 {
+  T2CON = 0x0;
+  TMR2 = 0x0;
+  PR2 = (80000000 / 256) / 10;
+
+  T2CON = 0x8070;
+
   volatile int * trise = (volatile int *) 0xbf886100;
   *trise &= 0x0; //1111 1111 1111 0001
+  
   return;
 }
 
@@ -40,13 +50,24 @@ void labwork( void )
   int button = getbtns();
   int switches = getsw();
 
-  delay( 1000 );
-  time2string( textstring, mytime );
-  display_string( 3, textstring );
-  display_update();
-  tick( &mytime );
-  *porte += 1;
+  if(IFS(0) & 0x100){
+    count += 1;
+    IFSCLR(0) = 0x100;
+  }
+  
+  if(count == 10){
+    time2string( textstring, mytime );
+    display_string( 3, textstring );
+    display_update();
+    tick( &mytime );
+    *porte += 1;
+    count = 0;
+  }
+
   display_image(96, icon);
+
+  //delay( 1000 );
+
 
   //check b2
   if((button & 0b001) == 1){
