@@ -177,22 +177,22 @@ tiend:	sw	$t0,0($a0)	# save updated result
   	nop
   	
   ding:
-  	# li	$t0,0x44
-  	# sb	$t0,0($s0)
+  	 li	$t0,0x44
+  	 sb	$t0,0($s0)
   	
-	# li	$t0,0x49
-  	# sb	$t0,1($s0)
+	 li	$t0,0x49
+  	 sb	$t0,1($s0)
   	
-  	# li	$t0,0x4E
-  	# sb	$t0,2($s0)  
+  	 li	$t0,0x4E
+  	 sb	$t0,2($s0)  
   	
-  	# li	$t0,0x47
-  	# sb	$t0,3($s0)
+  	 li	$t0,0x47
+  	 sb	$t0,3($s0)
   	
-  	li	$t0, 0x58
-  	sb	$t0, 5($s0)
+  	#li	$t0, 0x58
+  	#sb	$t0, 5($s0)
   	
-  	li	$t0,0x0
+  	li	$t0,0x00
   	sb	$t0,6($s0)
   quit:
 

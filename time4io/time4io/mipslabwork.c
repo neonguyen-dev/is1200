@@ -27,16 +27,21 @@ void user_isr( void )
 /* Lab-specific initialization goes here */
 void labinit( void )
 {
+  TRISD = 1; 
+  volatile int * trise = (volatile int *) 0xbf886100;
+  *trise = *trise & 0x0; //1111 1111 1111 0001
   return;
 }
 
 /* This function is called repetitively from the main program */
 void labwork( void )
 {
+  volatile int * porte = (volatile int *) 0xbf886110;
   delay( 1000 );
   time2string( textstring, mytime );
   display_string( 3, textstring );
   display_update();
   tick( &mytime );
+  *porte += 1;
   display_image(96, icon);
 }
