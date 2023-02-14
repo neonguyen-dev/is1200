@@ -45,7 +45,7 @@ void labinit( void )
 /* This function is called repetitively from the main program */
 void labwork( void )
 {
-  TRISD |= 0xFE0; 
+  TRISDSET |= 0xFE0; 
   volatile int * porte = (volatile int *) 0xbf886110;
   int button = getbtns();
   int switches = getsw();
