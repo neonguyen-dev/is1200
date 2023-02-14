@@ -13,10 +13,12 @@
 #include <stdint.h>   /* Declarations of uint_32 and the like */
 #include <pic32mx.h>  /* Declarations of system-specific addresses etc */
 #include "mipslab.h"  /* Declatations for these labs */
+ 
+int prime = 1234567;
 
 int mytime = 0x5957;
 
-int count = 0;
+int timeoutcount = 0;
 
 char textstring[] = "text, more text, and even more text!";
 
@@ -24,7 +26,18 @@ char textstring[] = "text, more text, and even more text!";
 /* Interrupt Service Routine */
 void user_isr( void )
 {
-  return;
+  if(IFS(0) & 0x100){
+    timeoutcount += 1;
+    IFSCLR(0) = 0x100; //reset the interupt condition
+  }
+  
+  if(timeoutcount == 10){
+    time2string( textstring, mytime );
+    display_string( 3, textstring );
+    display_update();
+    tick( &mytime );
+    timeoutcount = 0;
+  }
 }
 
 /* Lab-specific initialization goes here */
@@ -34,55 +47,23 @@ void labinit( void )
   TMR2 = 0x0;
   PR2 = (80000000 / 256) / 10;
 
+  IPCSET(2) = 0x1f;
+  IECSET(0) = 0x100;
+
   T2CON = 0x8070; //start the timer, reference to timer sheet
 
   volatile int * trise = (volatile int *) 0xbf886100;
-  *trise &= 0x0; //1111 1111 1111 0001
-  
+  *trise &= 0xFFFFFF00;
+
+  enable_interrupt();
+
   return;
 }
 
 /* This function is called repetitively from the main program */
 void labwork( void )
 {
-  TRISD |= 0x2; 
-  volatile int * porte = (volatile int *) 0xbf886110;
-  int button = getbtns();
-  int switches = getsw();
-
-  if(IFS(0) & 0x100){
-    count += 1;
-    IFSCLR(0) = 0x100; //reset the interupt condition
-  }
-  
-  if(count == 10){
-    time2string( textstring, mytime );
-    display_string( 3, textstring );
-    display_update();
-    tick( &mytime );
-    *porte += 1;
-    count = 0;
-  }
-
-  display_image(96, icon);
-
-  //delay( 1000 );
-
-
-  //check b2
-  if((button & 0b001) == 1){
-    mytime &= 0xff0f;
-    mytime |= (switches << 4); 
-  }
-
-  if((button & 0b010) == 2){
-    mytime &= 0xf0ff;
-    mytime |= (switches << 8); 
-  }
-
-  if((button & 0b100) == 4){
-    mytime &= 0x0fff;
-    mytime |= (switches << 12); 
-  }
-
+  prime = nextprime( prime );
+  display_string( 0, itoaconv( prime ) );
+  display_update();
 }

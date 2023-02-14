@@ -37,7 +37,7 @@ void labinit( void )
   T2CON = 0x8070; //start the timer, reference to timer sheet
 
   volatile int * trise = (volatile int *) 0xbf886100;
-  *trise &= 0x0; //1111 1111 1111 0001
+  *trise &= 0xFFFFFF00; //1111 1111 1111 0001
   
   return;
 }
@@ -45,7 +45,7 @@ void labinit( void )
 /* This function is called repetitively from the main program */
 void labwork( void )
 {
-  TRISD |= 0x2; 
+  TRISD |= 0xFE0; 
   volatile int * porte = (volatile int *) 0xbf886110;
   int button = getbtns();
   int switches = getsw();
