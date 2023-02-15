@@ -54,7 +54,7 @@ void display_debug( volatile int * const addr )
   display_update();
 }
 
-uint8_t spi_send_recv(uint8_t data) {
+uint8_t   spi_send_recv(uint8_t data) {
 	while(!(SPI2STAT & 0x08));
 	SPI2BUF = data;
 	while(!(SPI2STAT & 1));
@@ -109,7 +109,7 @@ void display_string(int line, char *s) {
 void display_image(int x, const uint8_t *data) {
 	int i, j;
 	
-	for(i = 0; i < 4; i++) {
+	for(i = 0; i < 2; i++) {
 		DISPLAY_CHANGE_TO_COMMAND_MODE;
 
 		spi_send_recv(0x22);
@@ -120,8 +120,8 @@ void display_image(int x, const uint8_t *data) {
 		
 		DISPLAY_CHANGE_TO_DATA_MODE;
 		
-		for(j = 0; j < 32; j++)
-			spi_send_recv(~data[i*32 + j]);
+		for(j = 0; j < 16; j++)
+			spi_send_recv(~data[i*16 + j]);
 	}
 }
 

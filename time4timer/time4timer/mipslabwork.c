@@ -30,27 +30,27 @@ void user_isr( void )
 /* Lab-specific initialization goes here */
 void labinit( void )
 {
-  T2CON = 0x0;
-  TMR2 = 0x0;
-  PR2 = (80000000 / 256) / 10;
+  T2CON = 0x0; // RESET THE TIMER
+  TMR2 = 0x0; // RESET TIMER 
+  PR2 = (80000000 / 256) / 10; //CLOCK PERIOD DIVIDED BY PRESCALE VALUE
 
-  T2CON = 0x8070; //start the timer, reference to timer sheet
+  T2CON = 0x8070; //start the timer, reference to timer sheet // 1000 0000 0111 0000
 
   volatile int * trise = (volatile int *) 0xbf886100;
   *trise &= 0xFFFFFF00; //1111 1111 1111 0001
   
+  TRISDSET = 0xFE0; 
   return;
 }
 
 /* This function is called repetitively from the main program */
 void labwork( void )
 {
-  TRISDSET |= 0xFE0; 
   volatile int * porte = (volatile int *) 0xbf886110;
   int button = getbtns();
   int switches = getsw();
 
-  if(IFS(0) & 0x100){
+  if(IFS(0) & 0x100){ // 0001 0000 0000
     count += 1;
     IFSCLR(0) = 0x100; //reset the interupt condition
   }
@@ -66,7 +66,7 @@ void labwork( void )
 
   display_image(96, icon);
 
-  //delay( 1000 );
+  //delay( 1000 ); 
 
 
   //check b2

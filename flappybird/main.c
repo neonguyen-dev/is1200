@@ -2,7 +2,7 @@
 #include <stdint.h>
 #include "flappybird.h"
 
-#define TMR2PERIOD ((80000000 / 256))
+#define TMR2PERIOD ((80000000 / 256) /60)
 
 int main(){
     /*
@@ -68,14 +68,16 @@ int main(){
     IPCSET(2) = 0x1f;
     IECSET(0) = 0x100;
 
+    TRISDSET = 0xFF0; 
+
     start();
 
     while (1)
     {
         if(IFS(0) & 0x100){
             IFSCLR(0) = 0x100;
-            update();
             display_update();
+            update();
         }
     }
     

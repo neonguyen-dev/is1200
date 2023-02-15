@@ -14,7 +14,7 @@
 #include <pic32mx.h>  /* Declarations of system-specific addresses etc */
 #include "mipslab.h"  /* Declatations for these labs */
 
-int mytime = 0x5957;
+int mytime = 0x5957; 
 
 char textstring[] = "text, more text, and even more text!";
 
@@ -30,17 +30,17 @@ void labinit( void )
   volatile int * trise = (volatile int *) 0xbf886100;
   *trise &= 0xFFFFFF00; //1111 1111 1111 0001
   return;
+  TRISDSET = 0xFE0; //1111 1110 0000  
 }
 
 /* This function is called repetitively from the main program */
 void labwork( void )
 {
-  TRISDSET |= 0xFE0; 
   volatile int * porte = (volatile int *) 0xbf886110;
   int button = getbtns();
   int switches = getsw();
 
-  delay( 1000 );
+  delay( 1000 ); //ungefär 1 sec
   time2string( textstring, mytime );
   display_string( 3, textstring );
   display_update();
@@ -51,7 +51,7 @@ void labwork( void )
   //check b2
   if((button & 0b001) == 1){
     mytime &= 0xff0f;
-    mytime |= (switches << 4); 
+    mytime |= (switches << 4);
   }
 
   if((button & 0b010) == 2){

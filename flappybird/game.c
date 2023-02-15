@@ -2,8 +2,6 @@
 #include <pic32mx.h>
 #include "flappybird.h"
 
-int i = 0;
-
 void user_isr(void){
 
 }
@@ -13,5 +11,18 @@ void start(void){
 }
 
 void update(void){
-    display_string(0, "SUG");
+    int button = getbtns();
+
+    if((button & 0b001) == 1){
+
+    }
+
+    if((button & 0b010) == 2){
+
+    }
+
+    if((button & 0b100) == 4){
+
+    }
+    display_image(0, character);
 }
