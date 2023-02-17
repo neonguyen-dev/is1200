@@ -50,6 +50,21 @@ void labwork( void )
   int button = getbtns();
   int switches = getsw();
 
+  if((button & 0b001) == 1){
+    mytime &= 0xff0f;
+    mytime |= (switches << 4); 
+  }
+
+  if((button & 0b010) == 2){
+    mytime &= 0xf0ff;
+    mytime |= (switches << 8); 
+  }
+
+  if((button & 0b100) == 4){
+    mytime &= 0x0fff;
+    mytime |= (switches << 12); 
+  }
+
   if(IFS(0) & 0x100){ // 0001 0000 0000
     count += 1;
     IFSCLR(0) = 0x100; //reset the interupt condition
@@ -67,22 +82,4 @@ void labwork( void )
   display_image(96, icon);
 
   //delay( 1000 ); 
-
-
-  //check b2
-  if((button & 0b001) == 1){
-    mytime &= 0xff0f;
-    mytime |= (switches << 4); 
   }
-
-  if((button & 0b010) == 2){
-    mytime &= 0xf0ff;
-    mytime |= (switches << 8); 
-  }
-
-  if((button & 0b100) == 4){
-    mytime &= 0x0fff;
-    mytime |= (switches << 12); 
-  }
-
-}

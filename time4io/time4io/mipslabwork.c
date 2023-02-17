@@ -28,9 +28,10 @@ void user_isr( void )
 void labinit( void )
 {
   volatile int * trise = (volatile int *) 0xbf886100;
-  *trise &= 0xFFFFFF00; //1111 1111 1111 0001
-  return;
+  *trise &= 0xFFFFFF00; //1111 1111 1111 1111 1111 1111 0000 0000
   TRISDSET = 0xFE0; //1111 1110 0000  
+
+  return;
 }
 
 /* This function is called repetitively from the main program */
@@ -38,7 +39,7 @@ void labwork( void )
 {
   volatile int * porte = (volatile int *) 0xbf886110;
   int button = getbtns();
-  int switches = getsw();
+  int switches = getsw(); 
 
   delay( 1000 ); //ungefär 1 sec
   time2string( textstring, mytime );
@@ -50,7 +51,7 @@ void labwork( void )
 
   //check b2
   if((button & 0b001) == 1){
-    mytime &= 0xff0f;
+    mytime &= 0xff0f; // 1111 1111 0000 1111
     mytime |= (switches << 4);
   }
 
