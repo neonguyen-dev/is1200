@@ -50,9 +50,9 @@ int countEight = 0;
       if((i - previousPrime) == 8){
         countEight++;
       }
+      previousPrime = i;
       print_number(i);
       currentColumn++;
-      previousPrime = i;
     }
     if(currentColumn == COLUMNS)
     {

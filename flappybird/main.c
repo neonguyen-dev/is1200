@@ -51,34 +51,18 @@ int main(){
 	SPI2CONSET = 0x8000;
 
     display_init();
-    display_update();
+    display_textupdate();
 
     /*
     Following code is written by N Nguyen and P Patranika   
     */
-
-    //Start timer
-    T2CON = 0x0;
-    TMR2 = 0x0;
-    PR2 = TMR2PERIOD;
-
-    T2CON = 0x8070; //start the timer, reference to timer sheet
-    
-    //Enable interrupts with highest priority
-    IPCSET(2) = 0x1f;
-    IECSET(0) = 0x100;
-
-    TRISDSET = 0xFF0; 
+	TRISDSET = 0xFF0; 
 
     start();
 
     while (1)
     {
-        if(IFS(0) & 0x100){
-            IFSCLR(0) = 0x100;
-            display_update();
-            update();
-        }
+        update();
     }
     
 

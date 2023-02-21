@@ -11,7 +11,8 @@
 void display_image(int x, const uint8_t *data);
 void display_init(void);
 void display_string(int line, char *s);
-void display_update(void);
+void display_textupdate(void);
+void display_gameupdate(void);
 uint8_t spi_send_recv(uint8_t data);
 
 /*Display debug*/
@@ -21,7 +22,7 @@ void display_debug( volatile int * const addr );
 extern const uint8_t const font[128*8];
 /* Declare bitmap array containing icon */
 extern const uint8_t const icon[128];
-extern const uint8_t const character[32];
+extern uint8_t displaypixels[32][128];
 /* Declare text buffer for display output */
 extern char textbuffer[4][16];
 
@@ -36,3 +37,9 @@ void time2string( char *, int );
 int getbtns(void);
 int getsw(void);
 void enable_interrupt(void);
+void insert_sprite(int x, int y, int lengthX, int lengthY, uint8_t const sprite[lengthY][lengthX]);
+void clear_display(void);
+
+/*Sprites*/
+extern uint8_t const character[12][17];
+extern uint8_t const obstacle[32][32];
