@@ -51,31 +51,31 @@ void user_isr(void)
             insert_sprite(xObstacle[0], 0, 11, 32, obstacle1);
             break;
         case 1:
-            insert_sprite(xObstacle[0], 0, 17, 32, obstacle2);
+            insert_sprite(xObstacle[0], 0, 11, 32, obstacle2);
             break;        
         case 2:
-            insert_sprite(xObstacle[0], 0, 17, 32, obstacle3);
+            insert_sprite(xObstacle[0], 0, 11, 32, obstacle3);
             break;        
         case 3:
-            insert_sprite(xObstacle[0], 0, 17, 32, obstacle4);
+            insert_sprite(xObstacle[0], 0, 11, 32, obstacle4);
             break;        
         case 4:
-            insert_sprite(xObstacle[0], 0, 17, 32, obstacle5);
+            insert_sprite(xObstacle[0], 0, 11, 32, obstacle5);
             break;        
         case 5:
-            insert_sprite(xObstacle[0], 0, 17, 32, obstacle6);
+            insert_sprite(xObstacle[0], 0, 11, 32, obstacle6);
             break;        
         case 6:
-            insert_sprite(xObstacle[0], 0, 17, 32, obstacle7);
+            insert_sprite(xObstacle[0], 0, 11, 32, obstacle7);
             break;        
         case 7:
-            insert_sprite(xObstacle[0], 0, 17, 32, obstacle8);
+            insert_sprite(xObstacle[0], 0, 11, 32, obstacle8);
             break;        
         case 8:
-            insert_sprite(xObstacle[0], 0, 17, 32, obstacle9);
+            insert_sprite(xObstacle[0], 0, 11, 32, obstacle9);
             break;        
         case 9:
-            insert_sprite(xObstacle[0], 0, 17, 32, obstacle10);
+            insert_sprite(xObstacle[0], 0, 11, 32, obstacle10);
             break;        
                 
         default:
@@ -99,31 +99,31 @@ void user_isr(void)
             insert_sprite(xObstacle[1], 0, 11, 32, obstacle1);
             break;
         case 1:
-            insert_sprite(xObstacle[1], 0, 17, 32, obstacle2);
+            insert_sprite(xObstacle[1], 0, 11, 32, obstacle2);
             break;        
         case 2:
-            insert_sprite(xObstacle[1], 0, 17, 32, obstacle3);
+            insert_sprite(xObstacle[1], 0, 11, 32, obstacle3);
             break;        
         case 3:
-            insert_sprite(xObstacle[1], 0, 17, 32, obstacle4);
+            insert_sprite(xObstacle[1], 0, 11, 32, obstacle4);
             break;        
         case 4:
-            insert_sprite(xObstacle[1], 0, 17, 32, obstacle5);
+            insert_sprite(xObstacle[1], 0, 11, 32, obstacle5);
             break;        
         case 5:
-            insert_sprite(xObstacle[1], 0, 17, 32, obstacle6);
+            insert_sprite(xObstacle[1], 0, 11, 32, obstacle6);
             break;        
         case 6:
-            insert_sprite(xObstacle[1], 0, 17, 32, obstacle7);
+            insert_sprite(xObstacle[1], 0, 11, 32, obstacle7);
             break;        
         case 7:
-            insert_sprite(xObstacle[1], 0, 17, 32, obstacle8);
+            insert_sprite(xObstacle[1], 0, 11, 32, obstacle8);
             break;        
         case 8:
-            insert_sprite(xObstacle[1], 0, 17, 32, obstacle9);
+            insert_sprite(xObstacle[1], 0, 11, 32, obstacle9);
             break;        
         case 9:
-            insert_sprite(xObstacle[1], 0, 17, 32, obstacle10);
+            insert_sprite(xObstacle[1], 0, 11, 32, obstacle10);
             break;        
                 
         default:
@@ -145,31 +145,31 @@ void user_isr(void)
             insert_sprite(xObstacle[2], 0, 11, 32, obstacle1);
             break;
         case 1:
-            insert_sprite(xObstacle[2], 0, 17, 32, obstacle2);
+            insert_sprite(xObstacle[2], 0, 11, 32, obstacle2);
             break;        
         case 2:
-            insert_sprite(xObstacle[2], 0, 17, 32, obstacle3);
+            insert_sprite(xObstacle[2], 0, 11, 32, obstacle3);
             break;        
         case 3:
-            insert_sprite(xObstacle[2], 0, 17, 32, obstacle4);
+            insert_sprite(xObstacle[2], 0, 11, 32, obstacle4);
             break;        
         case 4:
-            insert_sprite(xObstacle[2], 0, 17, 32, obstacle5);
+            insert_sprite(xObstacle[2], 0, 11, 32, obstacle5);
             break;        
         case 5:
-            insert_sprite(xObstacle[2], 0, 17, 32, obstacle6);
+            insert_sprite(xObstacle[2], 0, 11, 32, obstacle6);
             break;        
         case 6:
-            insert_sprite(xObstacle[2], 0, 17, 32, obstacle7);
+            insert_sprite(xObstacle[2], 0, 11, 32, obstacle7);
             break;        
         case 7:
-            insert_sprite(xObstacle[2], 0, 17, 32, obstacle8);
+            insert_sprite(xObstacle[2], 0, 11, 32, obstacle8);
             break;        
         case 8:
-            insert_sprite(xObstacle[2], 0, 17, 32, obstacle9);
+            insert_sprite(xObstacle[2], 0, 11, 32, obstacle9);
             break;        
         case 9:
-            insert_sprite(xObstacle[2], 0, 17, 32, obstacle10);
+            insert_sprite(xObstacle[2], 0, 11, 32, obstacle10);
             break;        
                 
         default:
@@ -193,31 +193,31 @@ void user_isr(void)
             insert_sprite(xObstacle[3], 0, 11, 32, obstacle1);
             break;
         case 1:
-            insert_sprite(xObstacle[3], 0, 17, 32, obstacle2);
+            insert_sprite(xObstacle[3], 0, 11, 32, obstacle2);
             break;        
         case 2:
-            insert_sprite(xObstacle[3], 0, 17, 32, obstacle3);
+            insert_sprite(xObstacle[3], 0, 11, 32, obstacle3);
             break;        
         case 3:
-            insert_sprite(xObstacle[3], 0, 17, 32, obstacle4);
+            insert_sprite(xObstacle[3], 0, 11, 32, obstacle4);
             break;        
         case 4:
-            insert_sprite(xObstacle[3], 0, 17, 32, obstacle5);
+            insert_sprite(xObstacle[3], 0, 11, 32, obstacle5);
             break;        
         case 5:
-            insert_sprite(xObstacle[3], 0, 17, 32, obstacle6);
+            insert_sprite(xObstacle[3], 0, 11, 32, obstacle6);
             break;        
         case 6:
-            insert_sprite(xObstacle[3], 0, 17, 32, obstacle7);
+            insert_sprite(xObstacle[3], 0, 11, 32, obstacle7);
             break;        
         case 7:
-            insert_sprite(xObstacle[3], 0, 17, 32, obstacle8);
+            insert_sprite(xObstacle[3], 0, 11, 32, obstacle8);
             break;        
         case 8:
-            insert_sprite(xObstacle[3], 0, 17, 32, obstacle9);
+            insert_sprite(xObstacle[3], 0, 11, 32, obstacle9);
             break;        
         case 9:
-            insert_sprite(xObstacle[3], 0, 17, 32, obstacle10);
+            insert_sprite(xObstacle[3], 0, 11, 32, obstacle10);
             break;        
                 
         default:

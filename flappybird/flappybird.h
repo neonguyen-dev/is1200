@@ -46,13 +46,13 @@ int collision_check(int x, int y, uint8_t const sprite[7][10]);
 extern uint8_t const character[7][10];
 
 extern uint8_t const obstacle1[32][11];
-extern uint8_t const obstacle2[32][17];
-extern uint8_t const obstacle3[32][17];
-extern uint8_t const obstacle4[32][17];
-extern uint8_t const obstacle5[32][17];
-extern uint8_t const obstacle6[32][17];
-extern uint8_t const obstacle7[32][17];
-extern uint8_t const obstacle8[32][17];
-extern uint8_t const obstacle9[32][17];
-extern uint8_t const obstacle10[32][17];
+extern uint8_t const obstacle2[32][11];
+extern uint8_t const obstacle3[32][11];
+extern uint8_t const obstacle4[32][11];
+extern uint8_t const obstacle5[32][11];
+extern uint8_t const obstacle6[32][11];
+extern uint8_t const obstacle7[32][11];
+extern uint8_t const obstacle8[32][11];
+extern uint8_t const obstacle9[32][11];
+extern uint8_t const obstacle10[32][11];
 
