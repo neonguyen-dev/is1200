@@ -54,7 +54,7 @@ void display_debug( volatile int * const addr )
   display_textupdate();
 }
 
-uint8_t   spi_send_recv(uint8_t data) {
+uint8_t spi_send_recv(uint8_t data) {
 	while(!(SPI2STAT & 0x08));
 	SPI2BUF = data;
 	while(!(SPI2STAT & 1));
@@ -173,7 +173,7 @@ void display_gameupdate(){
 }
 
 /*Function to insert sprite in display pixels*/
-void insert_sprite(int x, int y, int lengthX, int lengthY,uint8_t const sprite[lengthY][lengthX]){
+void insert_sprite(int x, int y, int lengthX, int lengthY, uint8_t const sprite[lengthY][lengthX]){
 	int i, j;
 	int originalY = y;
 	int originalX = x;
@@ -182,7 +182,7 @@ void insert_sprite(int x, int y, int lengthX, int lengthY,uint8_t const sprite[l
 		y = originalY + i;
 		for (j = 0; j < lengthX; j++, x++)
 		{
-			if(y < 0  || y > 32 || x < 0 || x > 128){
+			if(y < 0  || y > 32 || x < 0 || x >= 128){
 				continue;
 			}
 			displaypixels[y][x] |= sprite[i][j];
@@ -190,14 +190,14 @@ void insert_sprite(int x, int y, int lengthX, int lengthY,uint8_t const sprite[l
 	}
 }
 
-int collision_check(int x, int y, uint8_t const character[12][17]){
+int collision_check(int x, int y, uint8_t const character[7][10]){
 	int i, j;
 	int originalY = y;
 	int originalX = x;
-	for (i = 0; i < 12; i++, x = originalX)
+	for (i = 0; i < 10; i++, x = originalX)
 	{
 		y = originalY + i;
-		for (j = 0; j < 17; j++, x++)
+		for (j = 0; j < 7; j++, x++)
 		{
 			if(y < 0  || y > 32 || x < 0 || x > 128){
 				continue;

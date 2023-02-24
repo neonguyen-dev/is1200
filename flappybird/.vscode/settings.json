@@ -3,6 +3,8 @@
         "pic32mx.h": "c",
         "flappybird.h": "c",
         "stdint.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "stddef.h": "c",
+        "inline.h": "c"
     }
 }

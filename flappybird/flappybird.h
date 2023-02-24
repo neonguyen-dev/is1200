@@ -8,6 +8,7 @@
    For copyright and licensing, see file COPYING */
 
 /* Declare display-related functions from mipslabfunc.c */
+
 void display_image(int x, const uint8_t *data);
 void display_init(void);
 void display_string(int line, char *s);
@@ -39,10 +40,10 @@ int getsw(void);
 void enable_interrupt(void);
 void insert_sprite(int x, int y, int lengthX, int lengthY, uint8_t const sprite[lengthY][lengthX]);
 void clear_display(void);
-int collision_check(int x, int y, uint8_t const sprite[12][17]);
+int collision_check(int x, int y, uint8_t const sprite[7][10]);
 
 /*Sprites*/
-extern uint8_t const character[12][17];
+extern uint8_t const character[7][10];
 
 extern uint8_t const obstacle1[32][17];
 extern uint8_t const obstacle2[32][17];

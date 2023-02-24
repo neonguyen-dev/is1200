@@ -83,6 +83,7 @@ void user_isr(void)
     }
 
     xObstacle[0]--;
+    
 
     if(timeoutInsertObstacle[0] == (128 + 17)){
         xObstacle[0] = 128;
@@ -138,24 +139,98 @@ void user_isr(void)
 
     //3rd obstacle
     if(timeoutInsertObstacle[2] >= (distanceBetweenObstacles * 2)){
-        insert_sprite(xObstacle[2], 0, 17, 32, obstacle1);
+        switch (r[2])
+        {
+        case 0:
+            insert_sprite(xObstacle[2], 0, 17, 32, obstacle1);
+            break;
+        case 1:
+            insert_sprite(xObstacle[2], 0, 17, 32, obstacle2);
+            break;        
+        case 2:
+            insert_sprite(xObstacle[2], 0, 17, 32, obstacle3);
+            break;        
+        case 3:
+            insert_sprite(xObstacle[2], 0, 17, 32, obstacle4);
+            break;        
+        case 4:
+            insert_sprite(xObstacle[2], 0, 17, 32, obstacle5);
+            break;        
+        case 5:
+            insert_sprite(xObstacle[2], 0, 17, 32, obstacle6);
+            break;        
+        case 6:
+            insert_sprite(xObstacle[2], 0, 17, 32, obstacle7);
+            break;        
+        case 7:
+            insert_sprite(xObstacle[2], 0, 17, 32, obstacle8);
+            break;        
+        case 8:
+            insert_sprite(xObstacle[2], 0, 17, 32, obstacle9);
+            break;        
+        case 9:
+            insert_sprite(xObstacle[2], 0, 17, 32, obstacle10);
+            break;        
+                
+        default:
+            break;
+        }
         xObstacle[2]--;
     }
     
     if(xObstacle[2] == -17){
         xObstacle[2] = 128;
         timeoutInsertObstacle[2] = distanceBetweenObstacles * 2;
+        r[2] = rand() % 10;
+
     }
 
     //4th obstacle
     if(timeoutInsertObstacle[3] >= (distanceBetweenObstacles * 3)){
-        insert_sprite(xObstacle[3], 0, 17, 32, obstacle1);
+        switch (r[3])
+        {
+        case 0:
+            insert_sprite(xObstacle[3], 0, 17, 32, obstacle1);
+            break;
+        case 1:
+            insert_sprite(xObstacle[3], 0, 17, 32, obstacle2);
+            break;        
+        case 2:
+            insert_sprite(xObstacle[3], 0, 17, 32, obstacle3);
+            break;        
+        case 3:
+            insert_sprite(xObstacle[3], 0, 17, 32, obstacle4);
+            break;        
+        case 4:
+            insert_sprite(xObstacle[3], 0, 17, 32, obstacle5);
+            break;        
+        case 5:
+            insert_sprite(xObstacle[3], 0, 17, 32, obstacle6);
+            break;        
+        case 6:
+            insert_sprite(xObstacle[3], 0, 17, 32, obstacle7);
+            break;        
+        case 7:
+            insert_sprite(xObstacle[3], 0, 17, 32, obstacle8);
+            break;        
+        case 8:
+            insert_sprite(xObstacle[3], 0, 17, 32, obstacle9);
+            break;        
+        case 9:
+            insert_sprite(xObstacle[3], 0, 17, 32, obstacle10);
+            break;        
+                
+        default:
+            break;
+        }
         xObstacle[3]--;
     }
     
     if(xObstacle[3] == -17){
         xObstacle[3] = 128;
         timeoutInsertObstacle[3] = distanceBetweenObstacles * 3;
+        r[3] = rand() % 10;
+
     }
 
     //Checks for collision on character
@@ -163,11 +238,12 @@ void user_isr(void)
         return;
     }
 
-    insert_sprite(x, y, 17, 12,character);
+    insert_sprite(x, y, 10, 7,character);
 }
 
 void start(void)
 {
+    srand((unsigned)12345);
     int i;
     T2CON = 0x0;
     TMR2 = 0x0;
@@ -185,7 +261,6 @@ void start(void)
     {
         r[i] = rand() % 10;
     }
-    
 
     insert_sprite(16, 12, 17, 12,character);
 
