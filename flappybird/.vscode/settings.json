@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "pic32mx.h": "c"
+        "pic32mx.h": "c",
+        "flappybird.h": "c",
+        "stdint.h": "c",
+        "stdlib.h": "c"
     }
 }

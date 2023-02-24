@@ -39,7 +39,19 @@ int getsw(void);
 void enable_interrupt(void);
 void insert_sprite(int x, int y, int lengthX, int lengthY, uint8_t const sprite[lengthY][lengthX]);
 void clear_display(void);
+int collision_check(int x, int y, uint8_t const sprite[12][17]);
 
 /*Sprites*/
 extern uint8_t const character[12][17];
-extern uint8_t const obstacle[32][32];
+
+extern uint8_t const obstacle1[32][17];
+extern uint8_t const obstacle2[32][17];
+extern uint8_t const obstacle3[32][17];
+extern uint8_t const obstacle4[32][17];
+extern uint8_t const obstacle5[32][17];
+extern uint8_t const obstacle6[32][17];
+extern uint8_t const obstacle7[32][17];
+extern uint8_t const obstacle8[32][17];
+extern uint8_t const obstacle9[32][17];
+extern uint8_t const obstacle10[32][17];
+

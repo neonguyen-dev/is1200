@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "mipslab.h": "c",
+        "pic32mx.h": "c"
+    }
+}

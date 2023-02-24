@@ -158,13 +158,12 @@ void display_gameupdate(){
 		spi_send_recv(i);
 		
 		spi_send_recv(0x0);
-		spi_send_recv(0x10);
-		
+		spi_send_recv(0x10);	
 		DISPLAY_CHANGE_TO_DATA_MODE;
 		for (j = 0; j < 128; j++)
 		{
 			display = displaypixels[i*8][j];
-			for (k = 1; k < 8; k++)
+			for (k = 0; k < 8; k++)
 			{
 				display |= displaypixels[i*8+k][j] << k;
 			}
@@ -176,18 +175,39 @@ void display_gameupdate(){
 /*Function to insert sprite in display pixels*/
 void insert_sprite(int x, int y, int lengthX, int lengthY,uint8_t const sprite[lengthY][lengthX]){
 	int i, j;
-	int tempY = y;
-	int tempX = x;
-	for (i = 0; i < lengthY; i++)
+	int originalY = y;
+	int originalX = x;
+	for (i = 0; i < lengthY; i++, x = originalX)
 	{
-		y = tempY + i;
-		for (j = 0; j < lengthX; j++)
+		y = originalY + i;
+		for (j = 0; j < lengthX; j++, x++)
 		{
-			displaypixels[y][x] = sprite[i][j];
-			x++;
+			if(y < 0  || y > 32 || x < 0 || x > 128){
+				continue;
+			}
+			displaypixels[y][x] |= sprite[i][j];
 		}
-		x = tempX;
 	}
+}
+
+int collision_check(int x, int y, uint8_t const character[12][17]){
+	int i, j;
+	int originalY = y;
+	int originalX = x;
+	for (i = 0; i < 12; i++, x = originalX)
+	{
+		y = originalY + i;
+		for (j = 0; j < 17; j++, x++)
+		{
+			if(y < 0  || y > 32 || x < 0 || x > 128){
+				continue;
+			}
+			if (displaypixels[y][x] & character[i][j]){
+				return 1;
+			}
+		}
+	}
+	return 0;
 }
 
 void clear_display(){

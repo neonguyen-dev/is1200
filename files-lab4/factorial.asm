@@ -7,6 +7,7 @@
 #
 #            for (int i = 0; i < argument; i++)
 #            {
+#		 int temp = factorialValue;
 #                for (int j = 0; j < temp; j++)
 #                {
 #                    for (int k = 0; k < i; k++)
@@ -14,7 +15,10 @@
 #                        factorialValue++;
 #                    }
 #                }
-#            }
+#            }¨
+#	     foreach i in argument{
+#	     factorialvalue = factorialvalue * i;
+#	     }
 
 	#a0 = argument
 	#a1 = i
@@ -23,7 +27,7 @@
 	#v0 = factorialvalue
 	#v1 = temp
 	
-	addi	$a0, $a0, 8	#parameter value to $a0
+	addi	$a0, $a0, 5	#parameter value to $a0
 	addi	$v1, $v1, 0
 	beq	$a0, $0, stop
 	addi	$v0, $v0, 1
