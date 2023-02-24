@@ -48,7 +48,7 @@ void user_isr(void)
     switch (r[0])
     {
         case 0:
-            insert_sprite(xObstacle[0], 0, 17, 32, obstacle1);
+            insert_sprite(xObstacle[0], 0, 11, 32, obstacle1);
             break;
         case 1:
             insert_sprite(xObstacle[0], 0, 17, 32, obstacle2);
@@ -96,7 +96,7 @@ void user_isr(void)
         switch (r[1])
         {
         case 0:
-            insert_sprite(xObstacle[1], 0, 17, 32, obstacle1);
+            insert_sprite(xObstacle[1], 0, 11, 32, obstacle1);
             break;
         case 1:
             insert_sprite(xObstacle[1], 0, 17, 32, obstacle2);
@@ -142,7 +142,7 @@ void user_isr(void)
         switch (r[2])
         {
         case 0:
-            insert_sprite(xObstacle[2], 0, 17, 32, obstacle1);
+            insert_sprite(xObstacle[2], 0, 11, 32, obstacle1);
             break;
         case 1:
             insert_sprite(xObstacle[2], 0, 17, 32, obstacle2);
@@ -190,7 +190,7 @@ void user_isr(void)
         switch (r[3])
         {
         case 0:
-            insert_sprite(xObstacle[3], 0, 17, 32, obstacle1);
+            insert_sprite(xObstacle[3], 0, 11, 32, obstacle1);
             break;
         case 1:
             insert_sprite(xObstacle[3], 0, 17, 32, obstacle2);
