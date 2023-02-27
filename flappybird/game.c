@@ -118,14 +118,14 @@ void user_isr(void)
     }
 }
 
-void start(void)
+void start(int seed)
 {
     clear_display();
     PORTE = 0;
     distanceBetweenObstacles = 24 + obstaclewidth;
 
     //Pseudo random, needs fixing, one option is to create a timer in menu and generate a seed in accordance to the timer value
-    srand((unsigned)12345);
+    srand(seed);
     
     x = 16;
     y = 12;

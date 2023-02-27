@@ -107,12 +107,21 @@ void display_string(int line, char *s) {
 }
 
 void display_marker(int line, char *s) {
-	int i;
 	if(line < 0 || line >= 4)
 		return;
 	if(!s)
 		return;
 	textbuffer[line][15] = *s;
+}
+
+void display_score(char *s){
+	int i;
+
+	for(i = 0; i < 16; i++)
+	if(*s) {
+		textbuffer[1][10 + i] = *s;
+		s++;
+	}
 }
 
 void display_image(int x, const uint8_t *data) {
@@ -174,7 +183,7 @@ void display_gameupdate(){
 			display = displaypixels[i*8][j];
 			for (k = 0; k < 8; k++)
 			{
-				display |= displaypixels[i*8+k][j] << k;
+				display |= displaypixels[i*8+k][j] << k;	
 			}
 			spi_send_recv(display);
 		}
@@ -265,9 +274,46 @@ int OnButtonEnter(int button){
     return 0;
 }
 
+/*Code taken from Labwork*/
 static void num32asc( char * s, int n ) 
 {
   int i;
   for( i = 28; i >= 0; i -= 4 )
     *s++ = "0123456789ABCDEF"[ (n >> i) & 15 ];
 }
+
+#define ITOA_BUFSIZ ( 24 )
+char * itoaconv( int num )
+{
+  register int i, sign;
+  static char itoa_buffer[ ITOA_BUFSIZ ];
+  static const char maxneg[] = "-2147483648";
+  
+  itoa_buffer[ ITOA_BUFSIZ - 1 ] = 0;   /* Insert the end-of-string marker. */
+  sign = num;                           /* Save sign. */
+  if( num < 0 && num - 1 > 0 )          /* Check for most negative integer */
+  {
+    for( i = 0; i < sizeof( maxneg ); i += 1 )
+    itoa_buffer[ i + 1 ] = maxneg[ i ];
+    i = 0;
+  }
+  else
+  {
+    if( num < 0 ) num = -num;           /* Make number positive. */
+    i = ITOA_BUFSIZ - 2;                /* Location for first ASCII digit. */
+    do {
+      itoa_buffer[ i ] = num % 10 + '0';/* Insert next digit. */
+      num = num / 10;                   /* Remove digit from number. */
+      i -= 1;                           /* Move index to next empty position. */
+    } while( num > 0 );
+    if( sign < 0 )
+    {
+      itoa_buffer[ i ] = '-';
+      i -= 1;
+    }
+  }
+  /* Since the loop always sets the index i to the next empty position,
+   * we must add 1 in order to return a pointer to the first occupied position. */
+  return( &itoa_buffer[ i + 1 ] );
+}
+

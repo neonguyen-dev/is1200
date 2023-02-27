@@ -56,6 +56,11 @@ int main(){
     */
 	TRISDSET = 0xFE0;
 	TRISECLR = 0xFF; 
+	
+	T2CON = 0x0;
+    TMR2 = 0x0;
+	T2CON = 0x8070;
+
 
     while (1)
     {
@@ -117,12 +122,25 @@ int main(){
 			}
 		}
 
-		start();
+		start(TMR2);
 		while (!endGame)
 		{
         	update();	
 		}
-		// ENDGAME SCREEN
+
+		while(1){
+			// ENDGAME SCREEN
+			display_string(0, "   GAME OVER");
+			display_string(1, "    SCORE:");
+			display_score(itoaconv(PORTE));
+			display_string(2, "ENTER YOUR NAME");
+			//Entering name function, right here
+			display_string(3, "");
+			display_textupdate();
+			if(OnButtonEnter(4)){
+				break;
+			}
+		}
     }
 
     return 0;

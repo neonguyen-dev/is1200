@@ -34,10 +34,13 @@ extern char textbuffer[4][16];
 /* Written as part of asm lab: delay, time2string */
 void delay(int);
 void time2string( char *, int );
+char * itoaconv( int num );
+
 /* Written as part of i/o lab: getbtns, getsw, enable_interrupt */
 int getbtns(void);
 int getsw(void);
 void enable_interrupt(void);
+
 
 /*Essential game functions*/
 void insert_sprite(int x, int y, int lengthX, int lengthY, uint8_t const sprite[lengthY][lengthX]);
@@ -47,6 +50,8 @@ int OnButtonEnter(int button);
 
 /*Menu functions*/
 void display_marker(int line, char *s);
+
+void display_score(char *s);
 
 /*Sprites*/
 extern uint8_t const character[7][10];
