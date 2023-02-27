@@ -2,8 +2,6 @@
 #include <stdint.h>
 #include "flappybird.h"
 
-#define TMR2PERIOD ((80000000 / 256) /60)
-
 int main(){
     /*
       Following code is written 2015 by Axel Isaksson,
@@ -44,7 +42,7 @@ int main(){
 	/* SPI2STAT bit SPIROV = 0; */
 	SPI2STATCLR = 0x40;
 	/* SPI2CON bit CKP = 1; */
-        SPI2CONSET = 0x40;
+    SPI2CONSET = 0x40;
 	/* SPI2CON bit MSTEN = 1; */
 	SPI2CONSET = 0x20;
 	/* SPI2CON bit ON = 1; */
@@ -56,7 +54,8 @@ int main(){
     /*
     Following code is written by N Nguyen and P Patranika   
     */
-	TRISDSET = 0xFF0; 
+	TRISDSET = 0xFE0;
+	TRISECLR = 0xFF; 
 
     while (1)
     {

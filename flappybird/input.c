@@ -1,3 +1,4 @@
+/*Code is taken from Lab 3. Written by N Nguyen and P Patranika*/
 #include <stdint.h>
 #include <pic32mx.h>
 #include "flappybird.h" 
