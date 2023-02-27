@@ -88,6 +88,33 @@ int main(){
 				if(select == 0){
 					endGame = 0;
 				}
+				if(select == 1){
+					//High Score
+				}
+				if(select == 2){
+					while(1){
+						display_string(0, "PRESS BUTTON 4");
+						display_string(1, "TO FLAP AND");
+						display_string(2, "AVOID OBSTACLES");
+						display_string(3, "HAVE FUN!");
+						display_textupdate();
+						if(OnButtonEnter(4)){
+							break;
+						}
+					}
+				}
+				if(select == 3){
+					while(1){
+						display_string(0, "GAME IS MADE BY");
+						display_string(1, "NEO NGUYEN");
+						display_string(2, "AND");
+						display_string(3, "PETER PATRANIKA");
+						display_textupdate();
+						if(OnButtonEnter(4)){
+							break;
+						}
+					}
+				}
 			}
 		}
 
@@ -96,6 +123,7 @@ int main(){
 		{
         	update();	
 		}
+		// ENDGAME SCREEN
     }
 
     return 0;
