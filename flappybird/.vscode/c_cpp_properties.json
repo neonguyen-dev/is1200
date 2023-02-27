@@ -11,11 +11,7 @@
                 "UNICODE",
                 "_UNICODE"
             ],
-<<<<<<< Updated upstream
             "compilerPath": "C:\\msys64\\usr\\bin\\gcc.exe",
-=======
-            "compilerPath": "C:/msys64/usr/bin/gcc.exe",
->>>>>>> Stashed changes
             "cStandard": "c17",
             "cppStandard": "gnu++17",
             "intelliSenseMode": "linux-gcc-x64",

@@ -16,18 +16,17 @@ int timeoutCharacter = 0;
 int timeoutObstacle = 0;
 int timeoutInsertObstacle[4] = {0, 0, 0, 0};
 
-
 int r[4];
 
 int OnButtonEnter(int button){
     static int onkey = 0;
     int getbutton = getbtns();
 
-    if((getbutton & 0b100) == 4 && button == 4 && onkey == 0){
+    if(getbutton & 0b100 && button == 4 && !onkey){
         onkey = 1;
         return 1;
     }
-    else if(!((getbutton & 0b100) == 4) && button == 4 && onkey == 1){
+    else if(!(getbutton & 0b100) && button == 4 && onkey){
         onkey = 0;
     }
 
@@ -41,6 +40,7 @@ void user_isr(void)
         y-=6;
     }
     
+    //Checking upperbounds
     if(y <= 0){
         y = 0;
     }  
@@ -61,40 +61,9 @@ void user_isr(void)
 
     //Inserting obstacles
     //1st obstacle
-    
     switch (r[0])
     {
         case 0:
-<<<<<<< Updated upstream
-            insert_sprite(xObstacle[0], 0, 17, 32, obstacle1);
-            break;
-        case 1:
-            insert_sprite(xObstacle[0], 0, 17, 32, obstacle2);
-            break;        
-        case 2:
-            insert_sprite(xObstacle[0], 0, 17, 32, obstacle3);
-            break;        
-        case 3:
-            insert_sprite(xObstacle[0], 0, 17, 32, obstacle4);
-            break;        
-        case 4:
-            insert_sprite(xObstacle[0], 0, 17, 32, obstacle5);
-            break;        
-        case 5:
-            insert_sprite(xObstacle[0], 0, 17, 32, obstacle6);
-            break;        
-        case 6:
-            insert_sprite(xObstacle[0], 0, 17, 32, obstacle7);
-            break;        
-        case 7:
-            insert_sprite(xObstacle[0], 0, 17, 32, obstacle8);
-            break;        
-        case 8:
-            insert_sprite(xObstacle[0], 0, 17, 32, obstacle9);
-            break;        
-        case 9:
-            insert_sprite(xObstacle[0], 0, 17, 32, obstacle10);
-=======
             insert_sprite(xObstacle[0], 0, obstaclewidth, 32, obstacle1);
             break;
         case 1:
@@ -123,7 +92,6 @@ void user_isr(void)
             break;        
         case 9:
             insert_sprite(xObstacle[0], 0, obstaclewidth, 32, obstacle10);
->>>>>>> Stashed changes
             break;        
                 
         default:
@@ -144,36 +112,6 @@ void user_isr(void)
         switch (r[1])
         {
         case 0:
-<<<<<<< Updated upstream
-            insert_sprite(xObstacle[1], 0, 17, 32, obstacle1);
-            break;
-        case 1:
-            insert_sprite(xObstacle[1], 0, 17, 32, obstacle2);
-            break;        
-        case 2:
-            insert_sprite(xObstacle[1], 0, 17, 32, obstacle3);
-            break;        
-        case 3:
-            insert_sprite(xObstacle[1], 0, 17, 32, obstacle4);
-            break;        
-        case 4:
-            insert_sprite(xObstacle[1], 0, 17, 32, obstacle5);
-            break;        
-        case 5:
-            insert_sprite(xObstacle[1], 0, 17, 32, obstacle6);
-            break;        
-        case 6:
-            insert_sprite(xObstacle[1], 0, 17, 32, obstacle7);
-            break;        
-        case 7:
-            insert_sprite(xObstacle[1], 0, 17, 32, obstacle8);
-            break;        
-        case 8:
-            insert_sprite(xObstacle[1], 0, 17, 32, obstacle9);
-            break;        
-        case 9:
-            insert_sprite(xObstacle[1], 0, 17, 32, obstacle10);
-=======
             insert_sprite(xObstacle[1], 0, obstaclewidth, 32, obstacle1);
             break;
         case 1:
@@ -202,7 +140,6 @@ void user_isr(void)
             break;        
         case 9:
             insert_sprite(xObstacle[1], 0, obstaclewidth, 32, obstacle10);
->>>>>>> Stashed changes
             break;        
                 
         default:
@@ -221,36 +158,6 @@ void user_isr(void)
         switch (r[2])
         {
         case 0:
-<<<<<<< Updated upstream
-            insert_sprite(xObstacle[2], 0, 17, 32, obstacle1);
-            break;
-        case 1:
-            insert_sprite(xObstacle[2], 0, 17, 32, obstacle2);
-            break;        
-        case 2:
-            insert_sprite(xObstacle[2], 0, 17, 32, obstacle3);
-            break;        
-        case 3:
-            insert_sprite(xObstacle[2], 0, 17, 32, obstacle4);
-            break;        
-        case 4:
-            insert_sprite(xObstacle[2], 0, 17, 32, obstacle5);
-            break;        
-        case 5:
-            insert_sprite(xObstacle[2], 0, 17, 32, obstacle6);
-            break;        
-        case 6:
-            insert_sprite(xObstacle[2], 0, 17, 32, obstacle7);
-            break;        
-        case 7:
-            insert_sprite(xObstacle[2], 0, 17, 32, obstacle8);
-            break;        
-        case 8:
-            insert_sprite(xObstacle[2], 0, 17, 32, obstacle9);
-            break;        
-        case 9:
-            insert_sprite(xObstacle[2], 0, 17, 32, obstacle10);
-=======
             insert_sprite(xObstacle[2], 0, obstaclewidth, 32, obstacle1);
             break;
         case 1:
@@ -279,7 +186,6 @@ void user_isr(void)
             break;        
         case 9:
             insert_sprite(xObstacle[2], 0, obstaclewidth, 32, obstacle10);
->>>>>>> Stashed changes
             break;        
                 
         default:
@@ -300,36 +206,6 @@ void user_isr(void)
         switch (r[3])
         {
         case 0:
-<<<<<<< Updated upstream
-            insert_sprite(xObstacle[3], 0, 17, 32, obstacle1);
-            break;
-        case 1:
-            insert_sprite(xObstacle[3], 0, 17, 32, obstacle2);
-            break;        
-        case 2:
-            insert_sprite(xObstacle[3], 0, 17, 32, obstacle3);
-            break;        
-        case 3:
-            insert_sprite(xObstacle[3], 0, 17, 32, obstacle4);
-            break;        
-        case 4:
-            insert_sprite(xObstacle[3], 0, 17, 32, obstacle5);
-            break;        
-        case 5:
-            insert_sprite(xObstacle[3], 0, 17, 32, obstacle6);
-            break;        
-        case 6:
-            insert_sprite(xObstacle[3], 0, 17, 32, obstacle7);
-            break;        
-        case 7:
-            insert_sprite(xObstacle[3], 0, 17, 32, obstacle8);
-            break;        
-        case 8:
-            insert_sprite(xObstacle[3], 0, 17, 32, obstacle9);
-            break;        
-        case 9:
-            insert_sprite(xObstacle[3], 0, 17, 32, obstacle10);
-=======
             insert_sprite(xObstacle[3], 0, obstaclewidth, 32, obstacle1);
             break;
         case 1:
@@ -358,7 +234,6 @@ void user_isr(void)
             break;        
         case 9:
             insert_sprite(xObstacle[3], 0, obstaclewidth, 32, obstacle10);
->>>>>>> Stashed changes
             break;        
                 
         default:
@@ -376,6 +251,8 @@ void user_isr(void)
 
     //Checks for collision on character
     if(collision_check(x, y, character)){
+        //Protocol for ending game if true
+        T2CONCLR = 0x8070;
         return;
     }
 
@@ -387,7 +264,9 @@ void start(void)
 {
     distanceBetweenObstacles += obstaclewidth;
 
+    //Pseudo random, needs fixing, one option is to create a timer in menu and generate a seed in accordance to the timer value
     srand((unsigned)12345);
+
     int i;
     T2CON = 0x0;
     TMR2 = 0x0;
@@ -405,8 +284,6 @@ void start(void)
     {
         r[i] = rand() % 10;
     }
-
-    insert_sprite(16, 12, 17, 12,character);
 
     enable_interrupt();
 }
