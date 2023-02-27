@@ -38,9 +38,15 @@ void time2string( char *, int );
 int getbtns(void);
 int getsw(void);
 void enable_interrupt(void);
+
+/*Essential game functions*/
 void insert_sprite(int x, int y, int lengthX, int lengthY, uint8_t const sprite[lengthY][lengthX]);
 void clear_display(void);
 int collision_check(int x, int y, uint8_t const sprite[7][10]);
+int OnButtonEnter(int button);
+
+/*Menu functions*/
+void display_marker(int line, char *s);
 
 /*Sprites*/
 extern uint8_t const character[7][10];

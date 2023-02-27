@@ -106,6 +106,15 @@ void display_string(int line, char *s) {
 			textbuffer[line][i] = ' ';
 }
 
+void display_marker(int line, char *s) {
+	int i;
+	if(line < 0 || line >= 4)
+		return;
+	if(!s)
+		return;
+	textbuffer[line][15] = *s;
+}
+
 void display_image(int x, const uint8_t *data) {
 	int i, j;
 	
@@ -221,6 +230,41 @@ void clear_display(){
 	}
 	
 }
+
+int OnButtonEnter(int button){
+    static int onkey[3] = {0,0,0};
+    int getbutton = getbtns();
+
+	//BTN2
+	if(getbutton & 0b001 && button == 2 && !onkey[0]){
+        onkey[0] = 1;
+        return 1;
+    }
+    else if(!(getbutton & 0b001) && button == 2 && onkey[0]){
+        onkey[0] = 0;
+    }
+
+	//BTN3
+	if(getbutton & 0b010 && button == 3 && !onkey[1]){
+        onkey[1] = 1;
+        return 1;
+    }
+    else if(!(getbutton & 0b010) && button == 3 && onkey[1]){
+        onkey[1] = 0;
+    }
+
+	//BTN4
+    if(getbutton & 0b100 && button == 4 && !onkey[2]){
+        onkey[2] = 1;
+        return 1;
+    }
+    else if(!(getbutton & 0b100) && button == 4 && onkey[2]){
+        onkey[2] = 0;
+    }
+
+    return 0;
+}
+
 static void num32asc( char * s, int n ) 
 {
   int i;

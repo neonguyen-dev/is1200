@@ -18,21 +18,6 @@ int timeoutInsertObstacle[4] = {0, 0, 0, 0};
 
 int r[4];
 
-int OnButtonEnter(int button){
-    static int onkey = 0;
-    int getbutton = getbtns();
-
-    if(getbutton & 0b100 && button == 4 && !onkey){
-        onkey = 1;
-        return 1;
-    }
-    else if(!(getbutton & 0b100) && button == 4 && onkey){
-        onkey = 0;
-    }
-
-    return 0;
-}
-
 void user_isr(void)
 {
     //User inputs
@@ -57,6 +42,7 @@ void user_isr(void)
     
     clear_display();
     IFSCLR(0) |= 0x100;
+    
     y++;
 
     //Inserting obstacles
@@ -97,10 +83,9 @@ void user_isr(void)
         default:
             break;
     }
-
     xObstacle[0]--;
-    
 
+    
     if(timeoutInsertObstacle[0] == (128 + obstaclewidth)){
         xObstacle[0] = 128;
         timeoutInsertObstacle[0] = 0;
@@ -252,6 +237,7 @@ void user_isr(void)
     //Checks for collision on character
     if(collision_check(x, y, character)){
         //Protocol for ending game if true
+        endGame = 1;
         T2CONCLR = 0x8070;
         return;
     }
@@ -262,10 +248,17 @@ void user_isr(void)
 
 void start(void)
 {
-    distanceBetweenObstacles += obstaclewidth;
+    clear_display();
+    distanceBetweenObstacles = 24 + obstaclewidth;
 
     //Pseudo random, needs fixing, one option is to create a timer in menu and generate a seed in accordance to the timer value
     srand((unsigned)12345);
+    
+    x = 16;
+    y = 12;
+    obstaclewidth = 11;
+    timeoutCharacter = 0;
+    timeoutObstacle = 0;
 
     int i;
     T2CON = 0x0;
@@ -283,7 +276,11 @@ void start(void)
     for (i = 0; i < 4; i++)
     {
         r[i] = rand() % 10;
+        timeoutInsertObstacle[i] = 0;
+        xObstacle[i] = 128;
     }
+
+    insert_sprite(16, 12, 10, 7,character);
 
     enable_interrupt();
 }

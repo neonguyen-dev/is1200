@@ -58,13 +58,45 @@ int main(){
     */
 	TRISDSET = 0xFF0; 
 
-    start();
-
     while (1)
     {
-        update();
+		endGame = 1;
+		while(endGame)
+		{
+			//Menu
+			static int select = 0;
+			display_string(0, "PLAY GAME");
+			display_string(1, "SCOREBOARD");
+			display_string(2, "HOW TO PLAY");
+			display_string(3, "CREDITS");
+			display_marker(select, "<");
+			display_textupdate();
+
+			if(OnButtonEnter(3)){
+				select++;
+				if(select == 4){
+					select = 0;
+				}
+			}
+			if(OnButtonEnter(2)){
+				select--;
+				if(select == -1){
+					select = 3;
+				}
+			}
+			if(OnButtonEnter(4)){
+				if(select == 0){
+					endGame = 0;
+				}
+			}
+		}
+
+		start();
+		while (!endGame)
+		{
+        	update();	
+		}
     }
-    
 
     return 0;
 }
