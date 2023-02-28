@@ -2,6 +2,8 @@
 #include <stdint.h>
 #include "flappybird.h"
 
+#define EEPROM 0b1010000
+
 int main(){
     /*
       Following code is written 2015 by Axel Isaksson,
@@ -61,6 +63,11 @@ int main(){
     TMR2 = 0x0;
 	T2CON = 0x8070;
 
+	//I2C
+	I2C1CON = 0;
+	I2C1CONSET = 0x200;
+	I2C1BRG = 0x0C2;
+
 	I2C1CONSET = 0x8000;
 
 
@@ -97,6 +104,14 @@ int main(){
 				}
 				if(select == 1){
 					//High Score
+					display_string(0, "999999999999");
+					display_string(1, "999999999999");
+					display_string(2, "999999999999");
+					display_string(3, "999999999999");
+					display_textupdate();
+					if(OnButtonEnter(4)){
+						break;
+					}
 				}
 				if(select == 2){
 					while(1){

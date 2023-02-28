@@ -69,3 +69,11 @@ extern uint8_t const obstacle10[32][11];
 
 /*Control variables*/
 int endGame;
+
+/*I2C functions*/
+void I2C_idle(void);
+void I2C_start(void);
+void I2C_stop(void);
+void I2C_restart(void);
+void I2C_ack(void);
+void I2C_nack(void);
