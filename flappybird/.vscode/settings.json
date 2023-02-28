@@ -5,6 +5,7 @@
         "stdint.h": "c",
         "stdlib.h": "c",
         "stddef.h": "c",
-        "inline.h": "c"
+        "inline.h": "c",
+        "cstdlib": "c"
     }
 }

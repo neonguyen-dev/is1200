@@ -61,9 +61,12 @@ int main(){
     TMR2 = 0x0;
 	T2CON = 0x8070;
 
+	I2C1CONSET = 0x8000;
+
 
     while (1)
     {
+		T2CON = 0x8070;
 		endGame = 1;
 		while(endGame)
 		{
@@ -109,7 +112,7 @@ int main(){
 				}
 				if(select == 3){
 					while(1){
-						display_string(0, "GAME IS MADE BY");
+						display_string(0, "MADE BY");
 						display_string(1, "NEO NGUYEN");
 						display_string(2, "AND");
 						display_string(3, "PETER PATRANIKA");
