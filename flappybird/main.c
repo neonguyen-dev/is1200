@@ -2,8 +2,8 @@
 #include <stdint.h>
 #include "flappybird.h"
 
-#define EEPROM_W 0xA0
-#define EEPROM_R 0xA1
+#define EEPROM_W 0b10100000
+#define EEPROM_R 0b10100001
 
 int main(){
     /*
@@ -67,8 +67,10 @@ int main(){
 	T2CON = 0x8070;
 
 	//I2C
+	double baud;
+
 	I2C1CON = 0;
-	I2C1BRG = 0xC2; //Baud Rate
+	I2C1BRG = 0xC2*2; //Baud Rate
 	I2C1STAT = 0;
 
 	I2C1CONSET = 0xA000; //1010 0000 0000 0000
@@ -106,24 +108,28 @@ int main(){
 				}
 				if(select == 1){
 					//High Score
-					uint8_t value;
-
+					uint8_t data;
 					I2C_start();
 					I2C_Write(EEPROM_W);
-					I2C_Write(0x5);
+					I2C_Write(0x00);
+					I2C_Write(0x00);
 					I2C_Write(100);
 					I2C_stop();
 
 					I2C_start();
 					I2C_Write(EEPROM_W);
-					I2C_Write(0x5);
+					I2C_Write(0x00);
+					I2C_Write(0x00);
 					I2C_restart();
 					I2C_Write(EEPROM_R);
-					I2C_Read(&value);
+					display_string(1, "999999999999");
+					display_textupdate();
+					data = I2C_Read();
+					I2C_nack();
 					I2C_stop();
-
+					
 					while(1){
-						display_string(0, itoaconv(value));
+						display_string(0, itoaconv(data));
 						display_string(1, "999999999999");
 						display_string(2, "999999999999");
 						display_string(3, "999999999999");

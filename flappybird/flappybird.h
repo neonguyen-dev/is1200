@@ -78,4 +78,4 @@ void I2C_restart(void);
 void I2C_ack(void);
 void I2C_nack(void);
 int I2C_Write(uint8_t data);
-void I2C_Read(uint8_t * value);
+uint8_t I2C_Read();
