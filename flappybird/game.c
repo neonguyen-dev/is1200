@@ -24,34 +24,34 @@ void insertObstacle(int obstacle){
         switch (r[obstacle])
         {
         case 0:
-            insert_sprite(xObstacle[obstacle], 0, obstaclewidth, 32, obstacle1);
+            insert_sprite(obstacle1, xObstacle[obstacle], 0, obstaclewidth, 32);
             break;
         case 1:
-            insert_sprite(xObstacle[obstacle], 0, obstaclewidth, 32, obstacle2);
+            insert_sprite(obstacle2, xObstacle[obstacle], 0, obstaclewidth, 32);
             break;        
         case 2:
-            insert_sprite(xObstacle[obstacle], 0, obstaclewidth, 32, obstacle3);
+            insert_sprite(obstacle3, xObstacle[obstacle], 0, obstaclewidth, 32);
             break;        
         case 3:
-            insert_sprite(xObstacle[obstacle], 0, obstaclewidth, 32, obstacle4);
+            insert_sprite(obstacle4, xObstacle[obstacle], 0, obstaclewidth, 32);
             break;        
         case 4:
-            insert_sprite(xObstacle[obstacle], 0, obstaclewidth, 32, obstacle5);
+            insert_sprite(obstacle5, xObstacle[obstacle], 0, obstaclewidth, 32);
             break;        
         case 5:
-            insert_sprite(xObstacle[obstacle], 0, obstaclewidth, 32, obstacle6);
+            insert_sprite(obstacle6, xObstacle[obstacle], 0, obstaclewidth, 32);
             break;        
         case 6:
-            insert_sprite(xObstacle[obstacle], 0, obstaclewidth, 32, obstacle7);
+            insert_sprite(obstacle7, xObstacle[obstacle], 0, obstaclewidth, 32);
             break;        
         case 7:
-            insert_sprite(xObstacle[obstacle], 0, obstaclewidth, 32, obstacle8);
+            insert_sprite(obstacle8, xObstacle[obstacle], 0, obstaclewidth, 32);
             break;        
         case 8:
-            insert_sprite(xObstacle[obstacle], 0, obstaclewidth, 32, obstacle9);
+            insert_sprite(obstacle9, xObstacle[obstacle], 0, obstaclewidth, 32);
             break;        
         case 9:
-            insert_sprite(xObstacle[obstacle], 0, obstaclewidth, 32, obstacle10);
+            insert_sprite(obstacle10, xObstacle[obstacle], 0, obstaclewidth, 32);
             break;        
                 
         default:
@@ -114,7 +114,7 @@ void user_isr(void)
         PORTE += 1;
     }
     
-    insert_sprite(x, y, 10, 7,character);
+    insert_sprite(character, x, y, 10, 7);
     }
 }
 
@@ -124,7 +124,6 @@ void start(int seed)
     PORTE = 0;
     distanceBetweenObstacles = 24 + obstaclewidth;
 
-    //Pseudo random, needs fixing, one option is to create a timer in menu and generate a seed in accordance to the timer value
     srand(seed);
     
     x = 16;
@@ -152,7 +151,7 @@ void start(int seed)
         xObstacle[i] = 128;
     }
 
-    insert_sprite(16, 12, 10, 7,character);
+    insert_sprite(character, 16, 12, 10, 7);
 
     enable_interrupt();
 }

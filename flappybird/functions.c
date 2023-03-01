@@ -191,7 +191,7 @@ void display_gameupdate(){
 }
 
 /*Function to insert sprite in display pixels*/
-void insert_sprite(int x, int y, int lengthX, int lengthY, uint8_t const sprite[lengthY][lengthX]){
+void insert_sprite(uint8_t * const sprite, int x, int y, int lengthX, int lengthY){
 	int i, j;
 	int originalY = y;
 	int originalX = x;
@@ -203,7 +203,7 @@ void insert_sprite(int x, int y, int lengthX, int lengthY, uint8_t const sprite[
 			if(y < 0  || y > 32 || x < 0 || x >= 128){
 				continue;
 			}
-			displaypixels[y][x] |= sprite[i][j];
+			displaypixels[y][x] |= *((sprite+i*lengthX) + j);
 		}
 	}
 }

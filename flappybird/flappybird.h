@@ -43,7 +43,7 @@ void enable_interrupt(void);
 
 
 /*Essential game functions*/
-void insert_sprite(int x, int y, int lengthX, int lengthY, uint8_t const sprite[lengthY][lengthX]);
+void insert_sprite(uint8_t * const sprite, int x, int y, int lengthX, int lengthY);
 void clear_display(void);
 int collision_check(int x, int y, uint8_t const sprite[7][10]);
 int OnButtonEnter(int button);
@@ -77,3 +77,5 @@ void I2C_stop(void);
 void I2C_restart(void);
 void I2C_ack(void);
 void I2C_nack(void);
+int I2C_Write(uint8_t data);
+void I2C_Read(uint8_t * value);

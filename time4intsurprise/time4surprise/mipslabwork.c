@@ -60,7 +60,7 @@ void labinit( void )
   
   //Set priority for interrupt
   IPCSET(2) = 0x1f;
-  IPCSET(1) = 0x1f000000; //new line
+  IPCSET(1) = 0x1f000000; //new line //0001 1111 0000 0000 0000 0000 0000 0000
 
   //enable interrupt
   IECSET(0) = 0x180; // 0001 1000 0000

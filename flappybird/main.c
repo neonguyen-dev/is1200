@@ -2,7 +2,8 @@
 #include <stdint.h>
 #include "flappybird.h"
 
-#define EEPROM 0b1010000
+#define EEPROM_W 0xA0
+#define EEPROM_R 0xA1
 
 int main(){
     /*
@@ -57,7 +58,9 @@ int main(){
     Following code is written by N Nguyen and P Patranika   
     */
 	TRISDSET = 0xFE0;
-	TRISECLR = 0xFF; 
+	TRISECLR = 0xFF;
+
+	PORTASET = 0xC000;
 	
 	T2CON = 0x0;
     TMR2 = 0x0;
@@ -65,11 +68,10 @@ int main(){
 
 	//I2C
 	I2C1CON = 0;
-	I2C1CONSET = 0x200;
-	I2C1BRG = 0x0C2;
+	I2C1BRG = 0xC2; //Baud Rate
+	I2C1STAT = 0;
 
-	I2C1CONSET = 0x8000;
-
+	I2C1CONSET = 0xA000; //1010 0000 0000 0000
 
     while (1)
     {
@@ -104,13 +106,31 @@ int main(){
 				}
 				if(select == 1){
 					//High Score
-					display_string(0, "999999999999");
-					display_string(1, "999999999999");
-					display_string(2, "999999999999");
-					display_string(3, "999999999999");
-					display_textupdate();
-					if(OnButtonEnter(4)){
-						break;
+					uint8_t value;
+
+					I2C_start();
+					I2C_Write(EEPROM_W);
+					I2C_Write(0x5);
+					I2C_Write(100);
+					I2C_stop();
+
+					I2C_start();
+					I2C_Write(EEPROM_W);
+					I2C_Write(0x5);
+					I2C_restart();
+					I2C_Write(EEPROM_R);
+					I2C_Read(&value);
+					I2C_stop();
+
+					while(1){
+						display_string(0, itoaconv(value));
+						display_string(1, "999999999999");
+						display_string(2, "999999999999");
+						display_string(3, "999999999999");
+						display_textupdate();
+						if(OnButtonEnter(4)){
+							break;
+						}
 					}
 				}
 				if(select == 2){
@@ -145,18 +165,40 @@ int main(){
 		{
         	update();	
 		}
-
+		
+		//Endgame screen
+		char name[4] = "___\0";
+		int nameCharacterSelect = 0;
+		int characterSelect = 0;
 		while(1){
-			// ENDGAME SCREEN
+			name[nameCharacterSelect] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[characterSelect];
+			
 			display_string(0, "   GAME OVER");
 			display_string(1, "    SCORE:");
 			display_score(itoaconv(PORTE));
 			display_string(2, "ENTER YOUR NAME");
-			//Entering name function, right here
-			display_string(3, "");
+			display_string(3, name);
+
 			display_textupdate();
+
+			if(OnButtonEnter(3)){
+				characterSelect++;
+				if(characterSelect == 26){
+					characterSelect = 0;
+				}
+			}
+			if(OnButtonEnter(2)){
+				characterSelect--;
+				if(characterSelect == -1){
+					characterSelect = 25;
+				}
+			}
+
 			if(OnButtonEnter(4)){
-				break;
+				nameCharacterSelect++;
+				characterSelect = 0;
+				if(nameCharacterSelect == 3)
+					break;
 			}
 		}
     }
