@@ -191,7 +191,7 @@ void display_gameupdate(){
 }
 
 /*Function to insert sprite in display pixels*/
-void insert_sprite(uint8_t * const sprite, int x, int y, int lengthX, int lengthY){
+void insert_sprite(uint8_t * sprite, int x, int y, int lengthX, int lengthY){
 	int i, j;
 	int originalY = y;
 	int originalX = x;
@@ -272,6 +272,100 @@ int OnButtonEnter(int button){
     }
 
     return 0;
+}
+
+void fill_pixels(uint8_t obstacle[32][11], int y){
+	int i;
+	for (i = 0; i < 11; i++)
+	{
+		obstacle[y][i] = 1;
+	}
+	
+}
+
+void shrink_obstacles(int currentObstacles[]){
+	int i,j,k;
+	for (i = 0; i < 10; i++)
+	{
+		//if(i == currentObstacles[0] ||
+		//   i == currentObstacles[1] || 
+		//   i == currentObstacles[2] ||
+		//   i == currentObstacles[3]){
+		//	continue;
+		//   }
+		j = 0;
+		int filledobstacle = 0;
+
+		while (j < 32 && !filledobstacle)
+		{
+			switch (i)
+			{
+			case 0:
+        	    if(obstacle1[j][0] == 0){
+					fill_pixels(obstacle1, j);
+					filledobstacle = 1;
+				}
+        	    break;
+        	case 1:
+        	    if(obstacle2[j][0] == 0){
+					fill_pixels(obstacle2, j);
+					filledobstacle = 1;
+				}
+        	    break;        
+        	case 2:
+        	    if(obstacle3[j][0] == 0){
+					fill_pixels(obstacle3, j);
+					filledobstacle = 1;
+				}
+        	    break;        
+        	case 3:
+        	    if(obstacle4[j][0] == 0){
+					fill_pixels(obstacle4, j);
+					filledobstacle = 1;
+				}
+        	    break;        
+        	case 4:
+        	    if(obstacle5[j][0] == 0){
+					fill_pixels(obstacle5, j);
+					filledobstacle = 1;
+				}
+        	    break;        
+        	case 5:
+        	    if(obstacle6[j][0] == 0){
+					fill_pixels(obstacle6, j);
+					filledobstacle = 1;
+				}
+        	    break;        
+        	case 6:
+        	    if(obstacle7[j][0] == 0){
+					fill_pixels(obstacle7, j);
+					filledobstacle = 1;
+				}
+        	    break;        
+        	case 7:
+        	    if(obstacle8[j][0] == 0){
+					fill_pixels(obstacle8, j);
+					filledobstacle = 1;
+				}
+        	    break;        
+        	case 8:
+        	    if(obstacle9[j][0] == 0){
+					fill_pixels(obstacle9, j);
+					filledobstacle = 1;
+				}
+        	    break;        
+        	case 9:
+        	    if(obstacle10[j][0] == 0){
+					fill_pixels(obstacle10, j);
+					filledobstacle = 1;
+				}
+        	    break;
+			}
+			j++;
+		}
+		
+	}
+	
 }
 
 /*Code taken from Labwork*/

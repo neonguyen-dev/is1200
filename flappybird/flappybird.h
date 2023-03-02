@@ -43,32 +43,33 @@ void enable_interrupt(void);
 
 
 /*Essential game functions*/
-void insert_sprite(uint8_t * const sprite, int x, int y, int lengthX, int lengthY);
+void insert_sprite(uint8_t * sprite, int x, int y, int lengthX, int lengthY);
 void clear_display(void);
 int collision_check(int x, int y, uint8_t const sprite[7][10]);
 int OnButtonEnter(int button);
+void shrink_obstacles(int currentObstacles[]);
 
 /*Menu functions*/
 void display_marker(int line, char *s);
-
 void display_score(char *s);
 
 /*Sprites*/
 extern uint8_t const character[7][10];
 
-extern uint8_t const obstacle1[32][11];
-extern uint8_t const obstacle2[32][11];
-extern uint8_t const obstacle3[32][11];
-extern uint8_t const obstacle4[32][11];
-extern uint8_t const obstacle5[32][11];
-extern uint8_t const obstacle6[32][11];
-extern uint8_t const obstacle7[32][11];
-extern uint8_t const obstacle8[32][11];
-extern uint8_t const obstacle9[32][11];
-extern uint8_t const obstacle10[32][11];
+extern uint8_t obstacle1[32][11];
+extern uint8_t obstacle2[32][11];
+extern uint8_t obstacle3[32][11];
+extern uint8_t obstacle4[32][11];
+extern uint8_t obstacle5[32][11];
+extern uint8_t obstacle6[32][11];
+extern uint8_t obstacle7[32][11];
+extern uint8_t obstacle8[32][11];
+extern uint8_t obstacle9[32][11];
+extern uint8_t obstacle10[32][11];
 
 /*Control variables*/
 int endGame;
+int currentGap;
 
 /*I2C functions*/
 void I2C_idle(void);

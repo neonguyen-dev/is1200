@@ -69,10 +69,14 @@ void insertObstacle(int obstacle){
         surpassedObstacle[obstacle] = 0;
     }
 
-    //Score checker
+    //Score checker & obstacle shrinker
     if(xObstacle[obstacle] < x && !surpassedObstacle[obstacle]){
         PORTE += 1;
         surpassedObstacle[obstacle] = 1;
+        if(PORTE % 10 == 0 && currentGap > 13){
+            shrink_obstacles(r);
+            currentGap--;
+        }
     }
 
 }
@@ -125,16 +129,16 @@ void user_isr(void)
     insertObstacle(3);
     
     //Checks for collision on character
-    if(collision_check(x, y, character)){
+    /*if(collision_check(x, y, character)){
         //Protocol for ending game if true
         endGame = 1;
         T2CONCLR = 0x8070;
         return;
-    }
-    
-    //Issue with x movement of character
+    }*/
     
     insert_sprite((uint8_t *)character, x, y, 10, 7);
+    //Shrink gap between obstacles
+    
     }
 }
 

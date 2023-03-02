@@ -67,6 +67,7 @@ int main(){
 	T2CON = 0x8070;
 
 	//I2C
+	/*
 	double baud;
 
 	I2C1CON = 0;
@@ -74,6 +75,7 @@ int main(){
 	I2C1STAT = 0;
 
 	I2C1CONSET = 0xA000; //1010 0000 0000 0000
+	*/
 
     while (1)
     {
