@@ -129,12 +129,12 @@ void user_isr(void)
     insertObstacle(3);
     
     //Checks for collision on character
-    /*if(collision_check(x, y, character)){
+    if(collision_check(x, y, character)){
         //Protocol for ending game if true
         endGame = 1;
         T2CONCLR = 0x8070;
         return;
-    }*/
+    }
     
     insert_sprite((uint8_t *)character, x, y, 10, 7);
     //Shrink gap between obstacles

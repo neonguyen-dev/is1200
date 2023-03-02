@@ -44,7 +44,8 @@ void quicksleep(int cyc) {
    Note: When you use this function, you should comment out any
    repeated calls to display_image; display_image overwrites
    about half of the digits shown by display_debug.
-*/   
+*/
+/*Code from Labwork*/
 void display_debug( volatile int * const addr )
 {
   display_string( 1, "Addr" );
@@ -54,6 +55,7 @@ void display_debug( volatile int * const addr )
   display_textupdate();
 }
 
+/*Code from Labwork*/
 uint8_t spi_send_recv(uint8_t data) {
 	while(!(SPI2STAT & 0x08));
 	SPI2BUF = data;
@@ -61,6 +63,7 @@ uint8_t spi_send_recv(uint8_t data) {
 	return SPI2BUF;
 }
 
+/*Code from Labwork*/
 void display_init(void) {
         DISPLAY_CHANGE_TO_COMMAND_MODE;
 	quicksleep(10);
@@ -91,6 +94,7 @@ void display_init(void) {
 	spi_send_recv(0xAF);
 }
 
+/*Code from Labwork*/
 void display_string(int line, char *s) {
 	int i;
 	if(line < 0 || line >= 4)
@@ -106,6 +110,7 @@ void display_string(int line, char *s) {
 			textbuffer[line][i] = ' ';
 }
 
+/*Code modified from Labwork*/
 void display_marker(int line, char *s) {
 	if(line < 0 || line >= 4)
 		return;
@@ -114,6 +119,7 @@ void display_marker(int line, char *s) {
 	textbuffer[line][15] = *s;
 }
 
+/*Code modified from Labwork*/
 void display_score(char *s){
 	int i;
 
@@ -124,6 +130,7 @@ void display_score(char *s){
 	}
 }
 
+/*Code from Labwork*/
 void display_image(int x, const uint8_t *data) {
 	int i, j;
 	
@@ -143,6 +150,7 @@ void display_image(int x, const uint8_t *data) {
 	}
 }
 
+/*Code from Labwork*/
 void display_textupdate(void) {
 	int i, j, k;
 	int c;
@@ -167,6 +175,7 @@ void display_textupdate(void) {
 	}
 }
 
+//Written by N Nguyen
 void display_gameupdate(){
 	int i, j, k;
 	int display;
@@ -191,6 +200,7 @@ void display_gameupdate(){
 }
 
 /*Function to insert sprite in display pixels*/
+//Written by N Nguyen
 void insert_sprite(uint8_t * sprite, int x, int y, int lengthX, int lengthY){
 	int i, j;
 	int originalY = y;
@@ -208,6 +218,7 @@ void insert_sprite(uint8_t * sprite, int x, int y, int lengthX, int lengthY){
 	}
 }
 
+//Written by N Nguyen
 int collision_check(int x, int y, uint8_t const character[7][10]){
 	int i, j;
 	int originalY = y;
@@ -228,6 +239,7 @@ int collision_check(int x, int y, uint8_t const character[7][10]){
 	return 0;
 }
 
+//Written by N Nguyen and P Patranik
 void clear_display(){
 	int i,j;
 	for (i = 0; i < 32; i++)
@@ -240,6 +252,7 @@ void clear_display(){
 	
 }
 
+//Written by N Nguyen and P Patranika
 int OnButtonEnter(int button){
     static int onkey[3] = {0,0,0};
     int getbutton = getbtns();
@@ -274,6 +287,7 @@ int OnButtonEnter(int button){
     return 0;
 }
 
+//Written by N Nguyen
 void fill_pixels(uint8_t obstacle[32][11], int y){
 	int i;
 	for (i = 0; i < 11; i++)
@@ -283,6 +297,7 @@ void fill_pixels(uint8_t obstacle[32][11], int y){
 	
 }
 
+//Written by N Nguyen
 void shrink_obstacles(int currentObstacles[]){
 	int i,j,k;
 	for (i = 0; i < 10; i++)
@@ -368,7 +383,7 @@ void shrink_obstacles(int currentObstacles[]){
 	
 }
 
-/*Code taken from Labwork*/
+/*Following code is taken from Labwork*/
 static void num32asc( char * s, int n ) 
 {
   int i;
