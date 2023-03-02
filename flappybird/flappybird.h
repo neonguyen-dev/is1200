@@ -41,7 +41,7 @@ int getbtns(void);
 int getsw(void);
 void enable_interrupt(void);
 
-
+/*The following header info is written by N Nguyen and P Patranika*/
 /*Essential game functions*/
 void insert_sprite(uint8_t * sprite, int x, int y, int lengthX, int lengthY);
 void clear_display(void);
