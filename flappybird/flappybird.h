@@ -79,3 +79,7 @@ void I2C_ack(void);
 void I2C_nack(void);
 int I2C_Write(uint8_t data);
 uint8_t I2C_Read();
+
+/*highscores*/
+char highscores[4][16];
+void store_highscore(char * name, int value);

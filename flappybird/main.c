@@ -108,7 +108,7 @@ int main(){
 				}
 				if(select == 1){
 					//High Score
-					uint8_t data;
+					/*uint8_t data;
 					I2C_start();
 					I2C_Write(EEPROM_W);
 					I2C_Write(0x00);
@@ -126,13 +126,15 @@ int main(){
 					display_textupdate();
 					data = I2C_Read();
 					I2C_nack();
-					I2C_stop();
+					I2C_stop();*/
 					
 					while(1){
-						display_string(0, itoaconv(data));
-						display_string(1, "999999999999");
-						display_string(2, "999999999999");
-						display_string(3, "999999999999");
+						int i;
+						for (i = 0; i < 4; i++)
+						{
+							display_string(i, highscores[i]);
+						}
+						
 						display_textupdate();
 						if(OnButtonEnter(4)){
 							break;
@@ -203,8 +205,10 @@ int main(){
 			if(OnButtonEnter(4)){
 				nameCharacterSelect++;
 				characterSelect = 0;
-				if(nameCharacterSelect == 3)
+				if(nameCharacterSelect == 3){
+					store_highscore((char *) name, PORTE);
 					break;
+				}	
 			}
 		}
     }
