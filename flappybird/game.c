@@ -16,7 +16,7 @@ int distanceBetweenObstacles = 24;
 
 int timeoutCharacter = 0;
 int timeoutObstacle = 0;
-int timeoutInsertObstacle[4] = {0, 0, 0, 0};
+int timeoutInsertObstacle[4] = {0, 0, 0, 0}; 
 
 int r[4];
 
@@ -74,6 +74,7 @@ void insertObstacle(int obstacle){
     if(xObstacle[obstacle] < x && !surpassedObstacle[obstacle]){
         PORTE += 1;
         surpassedObstacle[obstacle] = 1;
+        //current gap shouldn't be less than 16 pixels
         if(PORTE % 10 == 0 && currentGap > 16){
             shrink_obstacles(r);
             currentGap--;
