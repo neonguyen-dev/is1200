@@ -1,3 +1,5 @@
+/*Code is written by N Nguyen*/
+/*Doesn't work!*/
 #include <stdint.h>
 #include <pic32mx.h>
 #include "flappybird.h"

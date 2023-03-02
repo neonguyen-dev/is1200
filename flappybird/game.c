@@ -1,4 +1,5 @@
 /*Following code is written by P Patranika and N Nguyen*/
+/*Functions calls in main and vector.S are taken from Labwork*/
 #include <stdint.h> 
 #include <stdlib.h>
 #include <pic32mx.h>
@@ -73,7 +74,7 @@ void insertObstacle(int obstacle){
     if(xObstacle[obstacle] < x && !surpassedObstacle[obstacle]){
         PORTE += 1;
         surpassedObstacle[obstacle] = 1;
-        if(PORTE % 10 == 0 && currentGap > 13){
+        if(PORTE % 10 == 0 && currentGap > 16){
             shrink_obstacles(r);
             currentGap--;
         }
@@ -83,12 +84,13 @@ void insertObstacle(int obstacle){
 
 void user_isr(void)
 {
-    int button = getbtns();
     //User inputs
+    int button = getbtns();
     if(OnButtonEnter(4)){
         y-=6;
     }
 
+    //x-movement for character
     if(button & 0b001){
         x++;
         if(x >= 127 - 11){
@@ -137,8 +139,6 @@ void user_isr(void)
     }
     
     insert_sprite((uint8_t *)character, x, y, 10, 7);
-    //Shrink gap between obstacles
-    
     }
 }
 

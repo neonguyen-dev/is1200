@@ -55,7 +55,8 @@ int main(){
     display_textupdate();
 
     /*
-    Following code is written by N Nguyen and P Patranika   
+    Following code is written by N Nguyen and P Patranika
+	Function calls is taken from Labwork 
     */
 	TRISDSET = 0xFE0;
 	TRISECLR = 0xFF;

@@ -70,6 +70,7 @@ extern uint8_t obstacle10[32][11];
 /*Control variables*/
 int endGame;
 int currentGap;
+int filledobstacle;
 
 /*I2C functions*/
 void I2C_idle(void);

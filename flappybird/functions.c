@@ -239,7 +239,7 @@ int collision_check(int x, int y, uint8_t const character[7][10]){
 	return 0;
 }
 
-//Written by N Nguyen and P Patranik
+//Written by N Nguyen and P Patranika
 void clear_display(){
 	int i,j;
 	for (i = 0; i < 32; i++)
@@ -294,7 +294,7 @@ void fill_pixels(uint8_t obstacle[32][11], int y){
 	{
 		obstacle[y][i] = 1;
 	}
-	
+	filledobstacle = 1;
 }
 
 //Written by N Nguyen
@@ -309,7 +309,7 @@ void shrink_obstacles(int currentObstacles[]){
 		//	continue;
 		//   }
 		j = 0;
-		int filledobstacle = 0;
+		filledobstacle = 0;
 
 		while (j < 32 && !filledobstacle)
 		{
@@ -318,61 +318,51 @@ void shrink_obstacles(int currentObstacles[]){
 			case 0:
         	    if(obstacle1[j][0] == 0){
 					fill_pixels(obstacle1, j);
-					filledobstacle = 1;
 				}
         	    break;
         	case 1:
         	    if(obstacle2[j][0] == 0){
 					fill_pixels(obstacle2, j);
-					filledobstacle = 1;
 				}
         	    break;        
         	case 2:
         	    if(obstacle3[j][0] == 0){
 					fill_pixels(obstacle3, j);
-					filledobstacle = 1;
 				}
         	    break;        
         	case 3:
         	    if(obstacle4[j][0] == 0){
 					fill_pixels(obstacle4, j);
-					filledobstacle = 1;
 				}
         	    break;        
         	case 4:
         	    if(obstacle5[j][0] == 0){
 					fill_pixels(obstacle5, j);
-					filledobstacle = 1;
 				}
         	    break;        
         	case 5:
         	    if(obstacle6[j][0] == 0){
 					fill_pixels(obstacle6, j);
-					filledobstacle = 1;
 				}
         	    break;        
         	case 6:
         	    if(obstacle7[j][0] == 0){
 					fill_pixels(obstacle7, j);
-					filledobstacle = 1;
 				}
         	    break;        
         	case 7:
         	    if(obstacle8[j][0] == 0){
 					fill_pixels(obstacle8, j);
-					filledobstacle = 1;
 				}
         	    break;        
         	case 8:
         	    if(obstacle9[j][0] == 0){
 					fill_pixels(obstacle9, j);
-					filledobstacle = 1;
 				}
         	    break;        
         	case 9:
         	    if(obstacle10[j][0] == 0){
 					fill_pixels(obstacle10, j);
-					filledobstacle = 1;
 				}
         	    break;
 			}
